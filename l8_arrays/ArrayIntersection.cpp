@@ -1,22 +1,45 @@
 #include <iostream>
 #include <algorithm>
 using namespace std;
-
-void intersection(int *input1, int *input2, int size1, int size2)
-{
-    for(int i=0 ; i<size1; i++){
-        for(int j =0; j<size2; j++){
-           if (input1[i]==input2[j]){
-                 cout<<input2[j]<<" ";
-                 input2[j]=input1[i]=-1;
-				 break;
-           }
-        }
-    }
+// { BY USING FOR LOOPS: O(size1 * size2 )}
+void intersection(int *input1, int *input2, int size1, int size2){
+	for (int i = 0; i < size1; i++){
+		for (int j = 0; j < size2; j++){
+			if (input1[i] == input2[j]){
+				cout << input1[i] << " ";
+				input1[i] = input2[j] = -1;
+				break;
+			}
+		}
+	}
 }
 
-int main()
-{
+/*{ BY SORTING BOTH ARRAYS THEN FINDING INTERSECTION : // answers are correct but order is changed in the answer
+Time complexity : to sort both arrays           +   to find intersection
+		=O(size1*log(size1) + size2*log(size2)) +   O(size1+size2)       }*/
+void intersection(int *input1, int *input2, int size1, int size2){
+	sort(input1, input1+size1);
+	sort(input2, input2+size2);
+
+	for(int i=0; i<size1; i++){
+		int j=0;
+        if(input1[i]==input2[j]){
+			cout<<input1[i]<<" ";
+			input1[i]=input2[j]=-1;
+			break;
+		}else if(input1[i]>input2[j]){
+            j++;
+		}else if(input1[i]<input2[j]){
+			i++;
+		}
+	}
+}
+// { BY USING HASHMAPS: O(m+n) as searching and inserting operations in hashmaps are performed in O(1) time // later }
+
+void inetrsection(int *input1, int size1, int *input2, int size2){
+
+}
+int main(){
 	int t;
 	cin >> t;
 	while (t--){

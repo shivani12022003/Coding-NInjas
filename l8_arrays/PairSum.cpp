@@ -1,17 +1,27 @@
 #include <iostream>
 using namespace std;
 
-int pairSum(int *input, int size, int x)
-{
-    int count=0;
+// { BY USING FOR LOOPS}
+int pairSum(int *input, int size, int x){
+	int count=0;
 	for(int i=0; i<size; i++){
-		for(int j=size-1; j>=i; j--){
+		for(int j=i+1; j<size; j++){
 			if(input[i]+input[j]==x){
-			count++;
-            }
+				count++;
+			}
 		}
 	}
-return count;
+	return count;
+}
+// { BY SUBTRACTING FROM NUMBER USING HASHMAPS  }// later
+int pairSum(int *input, int size, int x){
+	int count =0;
+	for(int i=0; i<size; i++){
+		if(x-input[i]==0){
+			count++;
+		}
+	}
+	return count;
 }
 
 int main()

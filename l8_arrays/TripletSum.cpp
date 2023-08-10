@@ -1,33 +1,24 @@
-#include <iostream>
+#include<iostream>
 using namespace std;
-#include<bits/stdc++.h>
-
-int tripletSum(int *input, int size, int x)
-{
-   sort(input, input+size);
-    int ans = 0;
-    for (int i = 0; i < size - 2; i++)  {
-      int j = i + 1, k = size - 1;
-        while (j < k)
-        {
-            if (input[i] + input[j] + input[k] >= x)
-                k--;
-            else
-            {
-                ans += (k - j);
-                j++;
-            }
-        }
-    }
-    return ans;
+// { BY USING 3 FOR LOOPS :O(n³)}
+int tripletSum(int *input, int size, int x){
+	int count=0;
+	for(int i=0; i<size; i++){
+		for(int j=i+1; j<size; j++){
+			for(int k=j+1; k<size; k++){
+				if(input[i]+input[j]+input[k]==x){
+					count++;
+				}
+			}
+		}
+	}
+	return count;
 }
-int main()
-	
-{
+
+int main(){
 	int t;
 	cin >> t;
-	while (t--)
-	{
+	while (t--){
 		int size;
 		int x;
 		cin >> size;
