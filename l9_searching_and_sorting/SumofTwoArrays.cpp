@@ -1,21 +1,29 @@
 #include <iostream>
 using namespace std;
 
-void sumOfTwoArrays(int *input1, int size1, int *input2, int size2, int *output)
-{
-	int s3=max(size1,size2);
-   int sum=0,carry=0,s=0;
-   for(int i=size1; i>=0; i--){
-	   for(int j=size2; j>=0; j--){
-            sum=input1[i]+input2[j]+carry;
-			s=sum%10;
-			carry=sum/10;
-			for(int k=s3; k>=0; k--){
-		output[k]=s;
-	   }
+void sumOfTwoArrays(int *input1, int size1, int *input2, int size2, int *output){
+	int n=max(size1,size2)+1;
+	int i=size1-1,j=size2-1,carry=0,k=n-1;
+
+	while(i>=0 && j>=0){
+		int tempans=carry+input1[i]+input2[j];
+		int rem=tempans%10;
+		carry=tempans/10;
+		output[k]=rem;
+		k--;
+		i--;
+		j--;
 	}
-	}
-	
+	output[0]=carry;
+
+while(i>=0){ // when input2 ended first
+	output[k]=input1[i];
+	k--;i--;
+}
+while(j>=0){ // when input2 ended first
+	output[k]=input2[j];
+	k--;j--;
+}
 }
 
 int main(){

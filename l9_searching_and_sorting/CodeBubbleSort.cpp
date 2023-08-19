@@ -1,8 +1,7 @@
 #include <iostream>
 using namespace std;
 
-void bubbleSort(int *input, int size)
-{ 
+void bubbleSort(int *input, int size){ 
     for(int j=0; j<size-1; j++){
         for(int i=0; i<size-j-1; i++){
           if(input[i]>input[i+1]){

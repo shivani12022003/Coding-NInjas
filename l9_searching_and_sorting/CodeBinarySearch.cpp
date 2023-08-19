@@ -1,8 +1,7 @@
 #include <iostream>
 using namespace std;
 
- int binarySearch(int *input, int n, int val)
-{
+ int binarySearch(int *input, int n, int val){
     int start = 0, end = n - 1;
 	while(start <= end) {
 		int mid = (start + end) / 2;
@@ -16,7 +15,6 @@ using namespace std;
 			start = mid + 1;
 		}
 	}
-
 	return -1;
 }
 
