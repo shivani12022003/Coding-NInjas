@@ -5,7 +5,7 @@ using namespace std;
 
 string getCompressedString(string &input) {
     int n = input.size();
-    string compressString = "";
+    string compressString ="";
     int localCount = 0;
     char currentCharacter;
     int i = 0;
@@ -13,20 +13,17 @@ string getCompressedString(string &input) {
     for (i = 0; i < n; ++i){
         currentCharacter = input[i];
         localCount = 0;
-        for (j = i; j < n; ++j)
-        {
+        for (j = i; j < n; ++j){
             if(currentCharacter == input[j])
                 localCount++;
             else 
                 break;
         }
 
-        if(localCount == 1)
-        {
+        if(localCount == 1){
             compressString = compressString + currentCharacter;
         }
-        else
-        {
+        else{
             compressString = compressString + currentCharacter + to_string(localCount);
         }
         i = j - 1;

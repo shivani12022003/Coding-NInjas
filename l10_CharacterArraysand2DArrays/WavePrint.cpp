@@ -1,9 +1,7 @@
 #include <iostream>
 using namespace std;
 
-void wavePrint(int **input, int nRows, int mCols)
-{
-	
+void wavePrint(int **input, int nRows, int mCols){
     for(int col=0; col<mCols; col++){
 		//for even columns
 		if(col%2==0){

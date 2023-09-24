@@ -1,6 +1,17 @@
 #include <iostream>
 #include <cstring>
 using namespace std;
+//{ USING RECURSION }
+void removeAllOccurrencesOfChar(char input[], char c) {
+    if(input[0]==c){
+        for(int i=0; i!='\0'; i++){
+            input[i]=input[i+1];
+        }
+        removeAllOccurrencesOfChar(input,c);
+    }else{
+        removeAllOccurrencesOfChar(input+1,c);
+    }
+}
 
 void removeAllOccurrencesOfChar(char input[], char c) {
     int j, n = strlen(input);

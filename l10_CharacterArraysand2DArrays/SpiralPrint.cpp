@@ -1,28 +1,35 @@
 #include <iostream>
 using namespace std;
 
-void spiralPrint(int **input, int nRows, int nCols)
-{
-    int s_row=0, e_row=nRows-1, s_col=0, e_col=nCols-1;
-    while(s_row<=e_row && s_col<=e_col){
-    //for starting row
-    for(int j=s_col; j<=e_col; j++)
-       cout<<input[s_row][j]<<" ";   
-        s_row++;
-    //for ending column
-    for(int i=s_row; i<=e_row; i++)
-        cout<<input[i][e_col]<<" ";   
-        e_col--;
-    //for ending row
-    for(int j=e_col; j>=s_col; j--)
-        cout<<input[e_row][j]<<" ";  
-       e_row--;
-    //for starting column
-    for(int i=e_row; i>=s_row; i--)
-       cout<<input[i][s_col]<<" ";     
-       s_col++;
+void spiralPrint(int **input, int nRows, int nCols) {
+  int s_row = 0, e_row = nRows - 1, s_col = 0, e_col = nCols - 1, count = 0;
+  int totalElements = nRows * nCols;
+  while (count < totalElements) {
+    // for starting row
+    for (int j = s_col; j <= e_col && count<totalElements ; j++) {
+      cout << input[s_row][j] << " ";
+      count++;
+    }s_row++;
+
+    // for ending column
+    for (int i = s_row; i <= e_row && count<totalElements; i++) {
+      cout << input[i][e_col] << " ";
+      count++;
+    } e_col--;
+    // for ending row
+    for (int j = e_col; j >= s_col && count<totalElements; j--) {
+      cout << input[e_row][j] << " ";
+      count++;
+    } e_row--;
+    // for starting column
+    for (int i = e_row; i >= s_row && count<totalElements; i--) {
+      cout << input[i][s_col] << " ";
+      count++;
+    } s_col++;
+  }
 }
-}
+
+
 
 int main(){
     int t;

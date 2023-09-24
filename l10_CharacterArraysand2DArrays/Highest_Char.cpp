@@ -6,9 +6,9 @@ char highestOccurringChar(char input[]) {
     int freq[26] = { 0 };
     int max = -1;
     char result;
-    int len = strlen(input);
-    for (int i = 0; i < len; i++)
+    for (int i = 0; i !='\0'; i++)
         freq[input[i]-'a']++;
+
     for (int i = 0; i < 26; i++)
         if (max < freq[i]) {
             max = freq[i];
